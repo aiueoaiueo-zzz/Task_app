@@ -526,17 +526,19 @@ export default function App() {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=DM+Mono:wght@400;500;600&display=swap');
         *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
-        body{overscroll-behavior:none;background:#0c0c10;}
+        html{height:-webkit-fill-available;}
+        body{overscroll-behavior:none;background:#0c0c10;min-height:100vh;min-height:-webkit-fill-available;}
         input,select,button{font-family:'Noto Sans JP',sans-serif;-webkit-appearance:none;appearance:none;}
         input[type="date"]::-webkit-calendar-picker-indicator{filter:invert(0.4);cursor:pointer;}
         ::-webkit-scrollbar{width:4px;}
         ::-webkit-scrollbar-thumb{background:#222;border-radius:2px;}
         input::placeholder{color:#3a3a4a;}
+        input:focus,select:focus{outline:none;border-color:rgba(124,109,250,0.5)!important;}
       `}</style>
 
       <div style={{
         maxWidth:"520px",margin:"0 auto",
-        padding:"28px 16px 110px",minHeight:"100vh",
+        padding:"28px 16px calc(110px + env(safe-area-inset-bottom, 16px))",minHeight:"100vh",
       }}>
 
         {/* Header */}
